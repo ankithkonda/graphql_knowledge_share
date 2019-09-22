@@ -1,0 +1,88 @@
+enum DefaultGuidedFailureModes {
+	ENVIRONMENT_DEFAULT
+}
+
+type DonorPackage {
+	DeploymentAction: String
+	PackageReference: String
+}
+
+type Greeting {
+	name: String
+	age: Int
+}
+
+type Project {
+	Id: String!
+	Name: String!
+	Description: String!
+	# This is a ID for the Variable Set
+	VariableSetId: String!
+		@deprecated(reason: "Support will be dropped in Q4/2020, see https://github.com/octopus/issues/43")
+	DeploymentProcessId: String!
+	ClonedFromProjectId: String
+	DiscreteChannelRelease: Boolean
+	IncludedLibraryVariableSetIds: [String!]!
+	DefaultToSkipIfAlreadyInstalled: Boolean
+	TenantedDeploymentMode: TenantedDeploymentModes!
+	DefaultGuidedFailureMode: DefaultGuidedFailureModes
+	VersioningStrategy: VersioningStrategy
+	ReleaseCreationStrategy: ReleaseCreationStrategy
+	Resources: ProjectResources
+}
+
+type ProjectResources {
+	Logo: String
+	Variables: ProjectVariables
+}
+
+type ProjectVariable {
+	Id: ID!
+	Name: String!
+	Value: String!
+	Description: String
+	Scope: ProjectVariableScope
+	IsEditable: Boolean
+	Type: String
+	IsSensitive: Boolean
+}
+
+type ProjectVariableScope {
+	Environment: [String]
+}
+
+type ProjectVariables {
+	Version: Int
+	Variables: [ProjectVariable!]!
+}
+
+type Query {
+	greeting(name: String): Greeting
+	project(id: ID!): Project
+}
+
+type ReleaseCreationPackage {
+	DeploymentAction: String
+	PackageReference: String
+}
+
+type ReleaseCreationStrategy {
+	ChannelId: String
+	ReleaseCreationPackage: ReleaseCreationPackage
+}
+
+enum TenantedDeploymentModes {
+	UNTENANTED
+	TENANTED
+	SSH
+}
+
+type VersioningStrategy {
+	Template: String
+	DonorPackage: DonorPackage
+	DonorPackageStepId: String
+}
+
+schema {
+	query: Query
+}

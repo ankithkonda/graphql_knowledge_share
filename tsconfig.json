@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": true,
+    "pretty": true,
+    "rootDir": ".",
+    "sourceMap": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+    "outDir": "lib",
+    "lib": [
+      "es2018"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "**/__tests__/**/*",
+    "**/__stories__/**/*",
+    "*.test.ts"
+  ],
+  "includes": [
+    "**/*.tsx",
+    "**/*.ts",
+    "**/*.js"
+ ]
+}
