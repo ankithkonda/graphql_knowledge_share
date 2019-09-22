@@ -18,7 +18,7 @@ type Project {
 	Description: String!
 	# This is a ID for the Variable Set
 	VariableSetId: String!
-		@deprecated(reason: "Support will be dropped in Q4/2020, see https://github.com/octopus/issues/43")
+		@deprecated(reason: "Variables are now available in Resources, support of this field will only be available until the end of Q4/2020, see https://github.com/octopus/issues/43")
 	DeploymentProcessId: String!
 	ClonedFromProjectId: String
 	DiscreteChannelRelease: Boolean
